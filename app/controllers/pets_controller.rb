@@ -1,6 +1,8 @@
 # app/controllers/pets_controller.rb
 
 class PetsController < ApplicationController
+  skip_before_action :ensure_user_not_mobile, only: :index
+
   def index
     pets = Pet.pluck(:name).join(", ")
     render text: pets
