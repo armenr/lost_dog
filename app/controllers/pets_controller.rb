@@ -11,13 +11,18 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 
-  def create
-    pet = Pet.new(pet_params)
+  def new
+    @pet = Pet.new
+  end
 
-    if pet.save
-      redirect_to pet_path(pet)
+  def create
+    @pet = Pet.new(pet_params)
+
+    if @pet.save
+      flash[:notice] = "Pet created successfully!"
+      redirect_to pet_path(@pet)
     else
-      render text: pet.errors.full_messages, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -40,7 +45,7 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.permit(:name, :breed, :color)
+    params.require(:pet).permit(:name, :breed, :color, :last_seen_at)
   end
 
 end
