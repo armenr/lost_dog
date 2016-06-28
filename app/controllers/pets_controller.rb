@@ -8,9 +8,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    pet = Pet.find(params[:id])
-    message = "My #{pet.breed} named #{pet.name} is #{pet.color}"
-    render text: message
+    @pet = Pet.find(params[:id])
   end
 
   def create
