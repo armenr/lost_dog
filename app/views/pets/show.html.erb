@@ -7,6 +7,13 @@
   <dt>Color</dt>
   <dd><%= @pet.color %></dd>
 
+  <dt>Last Seen</dt>
+  <dd><%= @pet.last_seen_at %></dd>
+
+  <div>
+    <%= link_to "Edit", edit_pet_path(@pet) %>
+  </div>
+
   <div>
     <%= link_to "Show All", pets_path %>
   </div>

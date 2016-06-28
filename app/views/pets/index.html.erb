@@ -19,7 +19,10 @@
         <td><%= pet.name %></td>
         <td><%= pet.breed %></td>
         <td><%= pet.color %></td>
-        <td><%= link_to "View", pet_path(pet) %></td>
+        <td>
+          <%= link_to "View", pet_path(pet) %> |
+          <%= link_to "Edit", edit_pet_path(pet) %>
+        </td>
       </tr>
   <% end %>
   </tbody>
