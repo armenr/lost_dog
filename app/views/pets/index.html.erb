@@ -21,7 +21,10 @@
         <td><%= pet.color %></td>
         <td>
           <%= link_to "View", pet_path(pet) %> |
-          <%= link_to "Edit", edit_pet_path(pet) %>
+          <%= link_to "Edit", edit_pet_path(pet) %> |
+          <%= link_to "Delete", pet_path(pet),
+                     method: :delete,
+                     data: {confirm: "Are you sure?"} %>
         </td>
       </tr>
   <% end %>

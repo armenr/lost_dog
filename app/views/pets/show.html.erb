@@ -11,7 +11,10 @@
   <dd><%= @pet.last_seen_at %></dd>
 
   <div>
-    <%= link_to "Edit", edit_pet_path(@pet) %>
+    <%= link_to "Edit", edit_pet_path(@pet) %> |
+    <%= link_to "Delete", pet_path(@pet),
+               method: :delete,
+               data: {confirm: "Are you sure?"} %>
   </div>
 
   <div>
