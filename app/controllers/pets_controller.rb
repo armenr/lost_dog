@@ -31,12 +31,12 @@ class PetsController < ApplicationController
   end
 
   def update
-    pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:id])
 
-    if pet.update(pet_params)
-      redirect_to pet_path(pet)
+    if @pet.update(pet_params)
+      redirect_to pet_path(@pet)
     else
-      render text: pet.errors.full_messages, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
