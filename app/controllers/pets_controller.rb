@@ -12,6 +12,7 @@ class PetsController < ApplicationController
   end
 
   def new
+    binding.pry
     @pet = Pet.new
   end
 
