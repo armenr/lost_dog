@@ -10,4 +10,12 @@ class PetDecorator < Draper::Decorator
   #     end
   #   end
 
+  def breed
+    if object.breed.blank?
+      "Unknown breed"
+    else
+      object.breed
+    end
+  end
+
 end
