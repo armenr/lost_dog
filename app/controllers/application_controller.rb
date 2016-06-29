@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id])
     end
   end
+  helper_method :current_user
 
 
   # before_action :ensure_user_not_mobile, except: :mobile
