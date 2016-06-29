@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to peths_path
+      redirect_to pets_path
     else
       redirect_to new_sessions_path, alert: 'Unable to authenticate'
     end
