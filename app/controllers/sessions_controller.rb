@@ -20,5 +20,7 @@ class SessionsController < ApplicationController
 
   #Logout
   def destroy
+    reset_session
+    redirect_to new_sessions_path
   end
 end
