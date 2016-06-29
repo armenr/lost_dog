@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   delete 'pets/:id' => 'pets#destroy'
 
   get '/mobile' => 'application#mobile'
+  get 'sessions/new' => 'sessions#new', as: :new_sessions
+  post 'sessions' => 'sessions#create', as: :sessions
+  delete 'sessions' => 'sessions#destroy'
+
 end

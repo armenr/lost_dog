@@ -3,18 +3,35 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
-  before_action :ensure_user_not_mobile, except: :mobile
-
-  def mobile
-    render text: 'You cannot view the requested page from a mobile device'
-  end
+  before_action :ensure_user_signed_in
 
   private
 
-  def ensure_user_not_mobile
-    if request.user_agent =~ /mobile/
-      redirect_to controller: 'application', action: 'mobile'
+  def ensure_user_signed_in
+    unless current_user.present?
+      redirect_to new_sessions_path, alert: 'Must be signed'
     end
   end
+
+  def current_user
+    if session.has_key? :user_id
+      @current_user ||= User.find(session[:user_id])
+    end
+  end
+
+
+  # before_action :ensure_user_not_mobile, except: :mobile
+  #
+  # def mobile
+  #   render text: 'You cannot view the requested page from a mobile device'
+  # end
+  #
+  # private
+  #
+  # def ensure_user_not_mobile
+  #   if request.user_agent =~ /mobile/
+  #     redirect_to controller: 'application', action: 'mobile'
+  #   end
+  # end
 
 end
